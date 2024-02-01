@@ -18,3 +18,30 @@
   text-align: left;
   color: black;
 }
+
+.id {
+  font-family: Roboto;
+  font-size: 26px;
+  font-weight: 500;
+  color: black;
+}
+.bal-due {
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 500;
+  color: black;
+}
+
+.bricks-word {
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  color: black;
+}
+
+.vat-word {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 100;
+  color: black;
+}
