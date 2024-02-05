@@ -1,0 +1,22 @@
+tr.mat-mdc-header-row.mdc-data-table__header-row.cdk-header-row {
+  background: black;
+  color: white;
+}
+
+th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-ItemAndDescription.mat-column-ItemAndDescription {
+  width: 59rem;
+}
+
+.tax-invoice {
+  font-family: Roboto;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: black;
+}
+
+th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-TaxDetails.mat-column-TaxDetails {
+  width: 55rem;
+}
