@@ -1,0 +1,183 @@
+#clilist-container {
+   table {
+    min-width: 814px;
+   }
+ 
+   mat-form-field {
+     width: 100%;
+   }
+ }
+ .PRJtable
+ {
+   min-width: -webkit-fill-available !important;
+ }
+ .content{
+   display: flex !important;
+ }
+ .search-container {
+   position: relative;
+   display: flex;
+   align-items: center;
+   background-color: #eff5ff;
+   min-height: 48px;
+   margin-top: -8px;
+ }
+ 
+ .search-icon {
+   position: absolute;
+   left: 8px;
+   /* Adjust the left position as needed */
+   color: #9e9e9e;
+   /* Adjust the color as needed */
+   cursor: pointer;
+ }
+ 
+ .download-icon {
+   position: relative;
+   float: right;
+   right: 36px;
+   text-align: right;
+   color: #9e9e9e;
+   cursor: pointer;
+ }
+ 
+ .blue {
+   background-color: #eff5ff;
+ }
+ #invText:hover {
+   background-color: rgba(0, 0, 0, .05);
+   cursor: pointer;
+ }
+ .card {
+     
+   width: 33%; /* Set a fixed width for the cards */
+   display: inline-block; /* Display the cards in a row */
+   vertical-align: top; /* Align cards at the top */
+ }
+ 
+ /* Customize styling as needed */
+ .card h2 {
+   color: #333;
+ }
+ 
+ .card p {
+   color: #666;
+ }
+ 
+ table {
+   width: 100%;
+ background: #f6f4f4;
+ padding: 10px;
+ }
+ 
+ .mat-header-row{
+   background: #f6f4f4;
+  }
+  .mat-row  {
+    padding: 100px;
+  }
+  .mat-row span{
+    position: relative;
+  }
+  .mat-row td {
+    height: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: none;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .mat-row td::before {
+    content: '';
+    background-color: white;
+    width: 100%;
+    height: calc(100% - 0.5rem);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+  }
+  
+  
+  .mat-row td:first-child:before {
+    border-left: 1px solid lightgray;
+    border-top-left-radius: 1px solid lightgray;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+  }
+  
+  .mat-row td:last-child:before {
+    border-right: 1px solid lightgray;
+    border-top-right-radius: 1px solid lightgray;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
+  
+  .mat-row:hover td::before {
+    border-color: gray;
+  }
+ 
+  @import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i");
+ 
+.brics-technologies-title {
+ font-family: Roboto;
+ font-size: 26px;
+ font-style: italic;
+ font-weight: 500;
+ text-align: left;
+ color: black;
+}
+ 
+.tax-invoice {
+ font-family: Roboto;
+ font-size: 40px;
+ font-weight: 400;
+ line-height: 84px;
+ letter-spacing: 0em;
+ text-align: right;
+ color: black;
+}
+ 
+@media print {
+ .noPrint{
+   display:none;
+ }
+}
+ 
+tr.mat-mdc-header-row.mdc-data-table__header-row.cdk-header-row {
+ /* background: black;
+ color: white; */
+}
+ 
+th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-ItemAndDescription.mat-column-ItemAndDescription {
+ width: 46rem;
+}
+ 
+.tax-invoice {
+ font-family: Roboto;
+ font-size: 40px;
+ font-weight: 400;
+ line-height: 25px;
+ letter-spacing: 0em;
+ text-align: left;
+ color: black;
+}
+ 
+th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-TaxDetails.mat-column-TaxDetails {
+ width: 55rem;
+}
+ 
+ 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+ 
+@media print {
+   .noPrint{
+     display:none;
+   }
+ }

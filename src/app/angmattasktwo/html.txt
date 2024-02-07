@@ -1,0 +1,260 @@
+<table mat-table [dataSource]="SalesinvoiceData.filteredData" matSort>
+ 
+        
+ <ng-container matColumnDef="SIH_InvDate">
+   <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice Date </th>
+   <td mat-cell *matCellDef="let element"> {{element.siH_InvDate  | date:'dd-MM-yyyy'}} </td>
+ </ng-container>
+ <ng-container matColumnDef="SIH_InvNo">
+   <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice Number </th>
+   <td id="invText" mat-cell (click)="openPrint(element.siH_InvNo,element.siH_ID)" *matCellDef="let element"> {{element.siH_InvNo}} </td>
+ </ng-container>
+ <ng-container matColumnDef="SIH_ReportRemarks">
+   <th mat-header-cell *matHeaderCellDef mat-sort-header> Report Remarks </th>
+   <td mat-cell *matCellDef="let element"> {{element.siH_ReportRemarks}} </td>
+ </ng-container>
+ <ng-container matColumnDef="SIH_TotalNetAmount">
+   <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Amount </th>
+   <td mat-cell *matCellDef="let element"> {{element.siH_TotalNetAmount}} </td>
+ </ng-container>
+ 
+ 
+ <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+ <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+ 
+</table>
+<mat-paginator #paginatorPageSize [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</mat-card-content>
+</mat-card>
+</div>
+ 
+<div [hidden]="showPrint">
+<mat-card >
+<mat-card-header class="noPrint">
+ <mat-card-title class="noPrint" style="color: #00519B;">Sales Invoice {{ this.inv_no}}</mat-card-title>
+</mat-card-header>
+<hr class="noPrint" style="width:100%;text-align:left;margin-left:0">
+<mat-card-content >
+ 
+ 
+
+
+<div class="container mt-5 border" id ="print-section"  *ngIf="!utilities">
+<div class="container mt-5">
+<div class="row">
+ 
+<span class="tax-invoice" style="text-align: right  !important;"> TAX INVOICE </span>
+ <div
+   class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-end"
+ >
+   <span class="id" style="    font-size: large;
+   font-weight: 600;
+   margin-top: 23px;"> # {{ this.inv_no}} </span>
+ </div>
+</div>
+ 
+<div class="row">
+ <div 
+   class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-start"
+ style="margin-top: -15px;">
+   <img [src]="url" alt="Company Logo"/>
+ </div>
+ <div
+   class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-end"
+ style="margin-top: 10px;">
+ 
+   <div class="d-flex flex-column">
+     <div class="bal-due" style="font-weight: 600; text-align: right;">Balance Due</div>
+     <div class="bal-due d-flex justify-content-end" style="font-size: x-large;
+     font-weight: 600;"> {{this.currency}}  {{this.vaT_TaxAmountAfterTax}}</div>
+   </div>
+ </div>
+</div>
+<div class="row">
+ <div
+   class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-start"
+ >
+   <span class="bricks-word" style="margin-top: 12px;
+   font-size: large;
+   font-weight: 500;"> {{this.CompanyName}}</span>
+   
+ </div>
+ <span class="bricks-word" style="margin-top: 12px;
+  "> {{this.address}}</span>
+  <span class="bricks-word" style="margin-top: 10px;
+  "> {{this.city}}</span>
+  <span class="bricks-word" style="margin-top: 10px;
+  "> {{this.country}}</span>
+   <span class="vat-word">VAT:  {{this.TRN}}</span>
+</div>
+ 
+<div class="row">
+ <div
+   class="col-xx-9 col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9 d-flex justify-content-end"
+ >
+   <div class="d-flex flex-column">
+     <span> Invoice Date:  {{this.InvDate | date:'dd/MM/yyyy'}} </span>
+     
+     <span class="d-flex justify-content-end"> Terms: </span>
+   </div>
+ </div>
+</div>
+<div class="row mt-2">
+ <div
+   class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-start"
+ >
+   <div class="d-flex flex-column">
+     <span> Bill To </span>
+     <span class="d-flex " style=" font-size: large;
+     font-weight: 500;"> {{this.cusName}} </span>
+     <span class="d-flex " style="text-align:left"> {{this.Location}} </span>
+   </div>
+ </div>
+ <div
+   class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 d-flex justify-content-end"
+ >
+   <div class="d-flex flex-column">
+     <span class="mt-1"> Due Date: </span>
+     <span class="d-flex justify-content-end mt-1"> VAT No:  </span>
+   </div>
+ </div>
+</div>
+<div class="row mt-2">
+ <div
+   class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-start"
+ >
+   <span> Subject: </span>
+ </div>
+ <div
+   class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 d-flex justify-content-end"
+ >
+   <span class="d-flex justify-content-end"> VAT: {{this.TRN}} </span>
+ </div>
+</div>
+<div class="row mt-2">
+ <div
+   class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-start"
+ >
+   <span>  </span>
+ </div>
+</div>
+<div></div>
+<div></div>
+<table mat-table [dataSource]="InvoiceOptionData" matSort class="mat-elevation-z8">
+ <!-- # column  -->
+ <ng-container matColumnDef="Hash">
+   <th mat-header-cell *matHeaderCellDef>#</th>
+   <td mat-cell *matCellDef="let element;let i=index">{{ i + 1 }}</td>
+ </ng-container>
+ 
+ <!-- Item & Description -->
+ <ng-container matColumnDef="ItemAndDescription">
+   <th mat-header-cell *matHeaderCellDef>Item & Description</th>
+   <td mat-cell *matCellDef="let element">{{element.i_Code}} , {{element.i_Description}}</td>
+ </ng-container>
+ 
+ <!-- Qty -->
+ <ng-container matColumnDef="Qty">
+   <th mat-header-cell *matHeaderCellDef>Qty</th>
+   <td mat-cell *matCellDef="let element">{{ element.siD_Quantity }}</td>
+ </ng-container>
+ 
+ <!-- Rate -->
+ <ng-container matColumnDef="Rate">
+   <th mat-header-cell *matHeaderCellDef>Rate</th>
+   <td mat-cell *matCellDef="let element">{{ element.siD_Rate }}</td>
+ </ng-container>
+ 
+ <!-- Taxable Amount -->
+ <ng-container matColumnDef="TaxableAmount">
+   <th mat-header-cell *matHeaderCellDef>Taxable Amount</th>
+   <td mat-cell *matCellDef="let element">  {{ element.siD_Rate }}   </td>
+ </ng-container>
+ 
+ <!-- Tax -->
+ <ng-container matColumnDef="Tax">
+   <th mat-header-cell *matHeaderCellDef>Tax</th>
+   <td mat-cell *matCellDef="let element">    {{ element.vaT_TaxAmount }} </td>
+ </ng-container>
+ 
+ <!-- Amount -->
+ <ng-container matColumnDef="Amount">
+   <th mat-header-cell *matHeaderCellDef>Amount</th>
+   <td mat-cell *matCellDef="let element">   {{ element.vaT_TaxAmountAfterTax}}   </td>
+ </ng-container>
+ 
+ <tr mat-header-row *matHeaderRowDef="printInvoiceColums"></tr>
+ <tr mat-row *matRowDef="let row;columns: printInvoiceColums"></tr>
+</table>
+<br/>
+<br/>
+ 
+<div class="row col-md-12">
+ <div class="col-md-6" >
+ </div>
+ <div class="col-md-6"  style=" font-size: large;
+ font-weight: 500;">Sub Total</div>
+</div>
+<hr>
+<br/>
+<div class="row col-md-12">
+<div class="col-md-6" >
+</div>
+<div class="col-md-3" style="text-align: right;font-size: large;
+font-weight: 500;">Total  </div>
+<div class="col-md-3" style="text-align: right;font-size: large;
+font-weight: 500;"> {{this.currency}}  {{this.vaT_TaxAmountAfterTax}}</div>
+<br/>
+<br/>
+<div class="row col-md-12">
+<div class="col-md-6" >
+</div>
+<div class="col-md-3" style="text-align: right;font-size: large;
+font-weight: 500;">Balance Due</div>
+<div class="col-md-3" style="text-align: right;font-size: large;
+font-weight: 500;">{{this.currency}}  {{this.vaT_TaxAmountAfterTax}}</div>
+</div>
+</div>
+<br/>
+<br/>
+ 
+<div class="row ">
+ <div class="col-xxl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+   <span>Notes</span>
+   <br>
+   <span>{{this.Remarks}}</span>
+ </div>
+</div>
+<br/>
+<br/>
+ 
+<div class="row">
+ <div
+   class="col-xxl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex flex-wrap flex-column"
+ >
+  
+ 
+   <span>Beneficiary Name :  {{this.CompanyName}}</span>
+   <span>Beneficiary Bank : {{this.bnkName}}</span>
+   <span>Bank Branch : {{this.bnkAdd}}</span>
+   <span>Beneficiary Account Number: {{this.BnkAccNo}}</span>
+   <span>Beneficiary Account Type:</span>
+   <span>IBAN Number:{{this.IBAN}}</span>
+   <span>Swift Code:{{bnkSwiftcode}}</span>
+ </div>
+</div>
+
+
+
+</div>
+</mat-card-content >
+ 
+<mat-card-footer>
+<div class="row">
+<div class="col-sm-12">
+ <button  mat-raised-button color="primary"onclick="window.print();" class="noPrint" style="margin-left: 2%;margin-top: 2%;">Print</button>
+</div>
+</div>
+</mat-card-footer>
+</mat-card>
+</div>
